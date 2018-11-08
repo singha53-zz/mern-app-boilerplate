@@ -56,6 +56,23 @@ app.listen(PORT, function() {
   });
 ```
 
+### Step 3b: Set up front-end react app
+  * install create-react-app globally if not already installed
+```shell
+yarn global add create-react-app
+```
+
+  * create react app called client (if you change client to something else, remember to also change it in the index.js file above)
+```shell
+create-react-app client
+```
+
+  * replace client/src/App.js with the following:
+```javascript
+import React, { Component } from 'react';
+
+
+```
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
