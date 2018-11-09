@@ -290,7 +290,7 @@ git push origin feature
 ```shell
 git checkout dev
 git pull origin dev
-git push staging-merntest0 master
+git push staging-merntest0 dev:master
 ```
 ### Step 5: Production
 ```shell
