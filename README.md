@@ -230,3 +230,4 @@ git push origin feature
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
+  2) https://developer.okta.com/blog/2018/01/11/two-approaches-to-setting-up-a-mern-stack-app
