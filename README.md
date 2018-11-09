@@ -195,14 +195,6 @@ yarn start
 #### If working the app should look like the following, but Learn react should be ALL CAPS!!
 ![alt text](https://d33wubrfki0l68.cloudfront.net/dbdecdbb76e8d2c779ddeda5cbf0be77d077c74a/7f8b4/assets/new-create-react-app.png)
 
-#### commit everything to master
-  * always be in the root folder (app_name/) when pushing to git (NOT client/)
-```javascript
-git add .
-git commit -m "create mern app"
-git push origin master
-```
-
 ## Step 4: Heroku flow
 ### Step 4a: add Heroku script for postbuild
   * got to app_name/package.json and add the following property to the scripts property. this tells heroku to build the client app 
@@ -230,6 +222,11 @@ origin  https://github.com/singha53/merntest.git (fetch)
 origin  https://github.com/singha53/merntest.git (push)
 staging-merntest0       https://git.heroku.com/cryptic-fjord-42648.git (fetch)
 staging-merntest0       https://git.heroku.com/cryptic-fjord-42648.git (push)
+```
+  * push apps to staging and production master
+```shell
+git push staging-merntest0 master
+git push heroku master
 ```
 
   * add the two heroku apps to a pipeline. First add the production app to the pipeline using the production apps name:
