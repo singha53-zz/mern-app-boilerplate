@@ -198,18 +198,28 @@ git push origin master
 ```
 
 ## Step 4: Heroku flow
-### Step 4a: create dev branch
+### Step 4a: add Heroku script for postbuild
+  * got to app_name/package.json and add the following property to the scripts property. this tells heroku to build the client app 
+```javascript
+"scripts": {
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
+  }
+```
+
+### Step 4b: create dev branch
 ```shell
 git checkout -b dev
 ```
 
-### Step 4b: create staging and production apps
+### Step 4c: create staging and production apps
 ```shell
 heroku create --remote staging-app
 heroku create app_name
 ```
 
-### Step 4c: create new feature and create a PR for review
+### Step 4d: create new feature and create a PR for review
 We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
   * create new feature branch
 ```javascript
@@ -228,7 +238,10 @@ git push origin feature
   * make sure base: dev and compare: feature
   * add comment and then click Create pull request (green button)
   * Git then checks for merge conflicts and will let you know if there is a conflict.
+  * if none, merge feature branch to dev
 
+### Step 4e: Staging
+  * 
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
