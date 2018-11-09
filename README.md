@@ -284,7 +284,7 @@ git checkout master
 it pull origin master
 git merge dev
 git push origin master
-heroku pipelines:promote -r staging
+heroku pipelines:promote -r staging-merntest0
 ```
   * go to https://<app_name>.herokuapp.com/ to confirm
 
