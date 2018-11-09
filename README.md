@@ -164,5 +164,30 @@ yarn start
 #### If working the app should look like the following, but Learn react should be ALL CAPS!!
 ![alt text](https://d33wubrfki0l68.cloudfront.net/dbdecdbb76e8d2c779ddeda5cbf0be77d077c74a/7f8b4/assets/new-create-react-app.png)
 
+#### commit everything to master
+```javascript
+git add .
+git commit -m "create mern app"
+git push origin master
+```
+
+#### Test Travis CI 
+We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
+  * create new feature branch
+```javascript
+git checkout -b feature
+git branch
+```
+  * within the feature branch, go to client/src/App.css and change background-color: #282c34; (line 11) to background-color: black; and save App.css
+  * add, commit and push to feature branch
+```shell
+git status
+git add .
+git commit -m "change background color"
+git push origin feature
+```
+  * go to the app_name repo page: https://github.com/singha53/app_name --> to to the Pull requests tab ==> click the green button (Compare & pull request). ![alt text](https://www.drupal.org/files/pull_request_test_highlighted.png)
+
+
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
