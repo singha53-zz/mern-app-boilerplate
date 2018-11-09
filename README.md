@@ -272,7 +272,20 @@ git push origin feature
   * if none, merge feature branch to dev
 
 ### Step 4e: Staging
-  * 
+  * go to the dev branch, then push the dev branch to the staging app
+```shell
+git checkout dev
+git pull origin dev
+git push staging-merntest0 dev:master
+```
+### Step 5: Production
+```shell
+git checkout master
+it pull origin master
+git merge dev
+git push origin master
+git push heroku master:master
+```
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
