@@ -148,7 +148,6 @@ describe("canary test", function() {
   * got to app_name/package.json and add a test property in the scripts property
 ```shell
 "scripts": {
-    "start": "node server.js",
     "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
   }
 ```
@@ -163,7 +162,8 @@ describe("canary test", function() {
   .
   .,
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
   }
 }
 ```
@@ -175,7 +175,10 @@ describe("canary test", function() {
   .
   .,
   "scripts": {
-    "start": "node index.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   }
 }
 ```
