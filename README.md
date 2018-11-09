@@ -209,6 +209,9 @@ yarn start
 ### Step 4b: Heroku pipeline
   * create staging and production apps
 ```shell
+heroku login
+Email: <username>
+Password: <password>
 heroku create --remote staging-app_name
 heroku create app_name
 git remote -v
