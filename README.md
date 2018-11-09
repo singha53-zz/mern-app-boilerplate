@@ -2,38 +2,49 @@
 create a MERN app from scratch including:
   * continuous integration via Travis CI
   * continous delivery via heroku flow + pipeline (no review ('paid') apps)
+  * unit testing
 
 Asides: 
   * prior to starting please make and account on github (https://github.com/), travis ci (https://travis-ci.org/) and heroku (https://id.heroku.com/login)
   * I use vs code
   * if servers are in use kill all servers: killall -9 node
 
-## Step 1: create gitup repo
+## Step 0: create gitup repo
   * go to repositories tab on your Github Profile page and hit the New button (green button on the right)
   * type name of app (app_name will be used throughout this tutorial; replace with the name of your choice), description, and initialize with README.md
   * FYI: if you already have a travis ci account and it is sycned with github, then at the time of initialization, there should be an option to select Travis CI.
+  
+## Step 1: add canary test
+  * create test folder in root directory (app_name/) and add a random test file
+```shell
+mkdir test
+cd test
+touch canary.test.js
+code canary.test.js
+```
+  * add the following lines in the canary.test.js file
+```shell
+const expect = require("chai").expect;
+
+describe("canary test", function() {
+  it("should pass this canary test", function() {
+    expect(true).to.be.true;
+  });
+});
+```
+  * got to app_name/package.json and add a test property in the scripts property
+```shell
+"scripts": {
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
+  }
+```
  
 ## Step 2: enable Travis CI
   * click Authorize travis-ci to log in with your GitHub username/password.
   * click on you picture and go to Settings
   * under Repositories search for app_name
   * modify the Settings of your app: under General: check-off build push branches and leave build pushed pull requests checked ( this is my personal preference)
-  * create a .travis.yml in the root directory (app_name/)
-```shell
-touch .travis.yml
-code .travis.yml
-```
-  * type the following in the yml file
-```shell
-language: node_js
-node_js: "8"
-branches:
-  only:
-  - master
-cache:
-  directories:
-    - node_module
-```
   
 ## Step 3: setup on MERN app on local machine
 ### Step 3a: Set up Express server
@@ -181,6 +192,7 @@ yarn start
 ![alt text](https://d33wubrfki0l68.cloudfront.net/dbdecdbb76e8d2c779ddeda5cbf0be77d077c74a/7f8b4/assets/new-create-react-app.png)
 
 #### commit everything to master
+  * always be in the root folder (app_name/) when pushing to git (NOT client/)
 ```javascript
 git add .
 git commit -m "create mern app"
@@ -203,6 +215,9 @@ git commit -m "change background color"
 git push origin feature
 ```
   * go to the app_name repo page: https://github.com/singha53/app_name --> to to the Pull requests tab ==> click the green button (Compare & pull request).
+  * make sure base: master and compare: feature
+  * add comment and then click Create pull request (green button)
+  * Git then checks for merge conflicts and will let you know if there is a conflict.
 
 
 ## Resources:
