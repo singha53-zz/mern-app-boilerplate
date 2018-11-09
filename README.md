@@ -162,7 +162,7 @@ yarn start
 yarn start
 ```
 #### If working the app should look like the following, but Learn react should be ALL CAPS!!
-
+![alt text](https://d33wubrfki0l68.cloudfront.net/dbdecdbb76e8d2c779ddeda5cbf0be77d077c74a/7f8b4/assets/new-create-react-app.png)
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
