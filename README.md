@@ -6,10 +6,12 @@ create a MERN app from scratch including:
 Asides: 
   * prior to starting please make and account on github (https://github.com/), travis ci (https://travis-ci.org/) and heroku (https://id.heroku.com/login)
   * I use vs code
+  * if servers are in use kill all servers: killall -9 node
 
 ## Step 1: create gitup repo
   * go to repositories tab on your Github Profile page and hit the New button (green button on the right)
   * type name of app (app_name will be used throughout this tutorial; replace with the name of your choice), description, and initialize with README.md
+  * FYI: if you already have a travis ci account and it is sycned with github, then at the time of initialization, there should be an option to select Travis CI.
  
 ## Step 2: enable Travis CI
   * click Authorize travis-ci to log in with your GitHub username/password.
@@ -22,8 +24,9 @@ Asides:
 ```shell
 git clone https://github.com/<username>/app_name.git
 cd app_name
+code .
 yarn init -y
-yarn add express
+yarn add express path
 touch index.js
 code index.js
 ```
@@ -37,8 +40,9 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // simple API end point
 app.get('/api/msg', (req, res) => {
-  res.send('yolo')
-};
+  const msg = 'LEARN REACT';
+  res.json(msg)
+});
 
 // catch all handler
 app.get('*', (req, res) => {
@@ -46,7 +50,7 @@ app.get('*', (req, res) => {
 });
 
 // listen to port
-const PROT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
@@ -66,6 +70,98 @@ yarn global add create-react-app
 ```shell
 create-react-app client
 ```
+
+  * go to client/src/index.js and comment out serviceWorker lines (prevents you from accessing API end points after the React app has been load once)
+```javascript
+// import * as serviceWorker from './serviceWorker';
+// serviceWorker.unregister();
+```
+
+  * change client/src/App.js to:
+```javascript
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {
+  // initialize state
+  state = { msg: '' }
+
+  // fetch msg after mounting
+  componentDidMount(){
+    this.getMsg();
+  }
+
+  getMsg = () => {
+    fetch('/api/msg')
+      .then(res => res.json())
+      .then(msg => this.setState( {msg}))
+  }
+
+  render() {
+    const { msg } = this.state;
+
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            { msg }
+          </a>
+        </header>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+
+## Step 4: Test MERN APP
+  * first go to app_name/package.json and add a new property (scripts)
+```javascript
+{
+  "name": "app_name",
+  .
+  .
+  .,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+```
+  * then go to app_name/client/package.json and add a new property (proxy)
+```javascript
+{
+  "name": "client"
+  "proxy": "http://localhost:8000"
+  .
+  .,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+
+ **note**: same port as express server
+
+  * in app_name/ start express server using:
+```shell
+yarn start
+```
+  * open a new terminal and go to app_name/client/ window and start react server:
+```shell
+yarn start
+```
+
 
   * replace client/src/App.js with the following:
 ```javascript
