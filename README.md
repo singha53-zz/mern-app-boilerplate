@@ -27,14 +27,15 @@ code .gitignore
 ```shell
 node_modules/
 ```
-  * create and index.js file
+  * create and server.js file
 ```shell
-touch index.js
-code index.js
+touch server.js
+code server.js
 ```
-  * add the following the index.js file
+  * add the following the server.js file
 ```javascript
 const express = require('express');
+const path = require('path');
 const app = express();
 
 // Serve React build
