@@ -214,12 +214,7 @@ git push origin master
   }
 ```
 
-### Step 4b: create dev branch
-```shell
-git checkout -b dev
-```
-
-### Step 4c: Heroku pipeline
+### Step 4b: Heroku pipeline
   * create staging and production apps
 ```shell
 heroku create --remote staging-app_name
@@ -256,6 +251,19 @@ Amrits-MacBook-Pro:merntest asingh$ heroku pipelines:add merntest0-pipeline -a c
 Adding ⬢ cryptic-fjord-42648 to merntest0-pipeline pipeline as staging... done
 ```
   * to confirm you can login in heroku and see the a pipeline (merntest0-pipeline) located with your other apps.
+
+#### commit everything to master
+  * always be in the root folder (app_name/) when pushing to git (NOT client/)
+```javascript
+git add .
+git commit -m "create mern app"
+git push origin master
+```
+
+### Step 4b: create dev branch
+```shell
+git checkout -b dev
+```
 
 ### Step 4d: create new feature and create a PR for review
 We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
