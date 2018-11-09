@@ -1,19 +1,16 @@
 # mern-app-boilerplate
 create a MERN app from scratch including:
-  * continuous integration via Travis CI
   * continous delivery via heroku flow + pipeline (no review ('paid') apps)
   * unit testing
 
 Asides: 
-  * prior to starting please make and account on github (https://github.com/), travis ci (https://travis-ci.org/) and heroku (https://id.heroku.com/login)
+  * prior to starting please make and account on github (https://github.com/), and heroku (https://id.heroku.com/login)
   * I use vs code
   * if servers are in use kill all servers: killall -9 node
 
 ## Step 0: create gitup repo
   * go to repositories tab on your Github Profile page and hit the New button (green button on the right)
   * type name of app (app_name will be used throughout this tutorial; replace with the name of your choice), description, and initialize with README.md
-  * FYI: if you already have a travis ci account and it is sycned with github, then at the time of initialization, there should be an option to select Travis CI.
-
   
 ## Step 1: setup on MERN app on local machine
 ### Step 1a: Set up Express server
@@ -153,14 +150,8 @@ describe("canary test", function() {
   }
 ```
 **Note: test property must exist in scripts for travis ci to work**
- 
-## Step 3: enable Travis CI
-  * click Authorize travis-ci to log in with your GitHub username/password.
-  * click on you picture and go to Settings
-  * under Repositories search for app_name
-  * modify the Settings of your app: under General: check-off build push branches and leave build pushed pull requests checked ( this is my personal preference)
 
-## Step 4: Test MERN APP
+## Step 3: Test MERN APP
   * first go to app_name/package.json and add a new property (scripts)
 ```javascript
 {
@@ -206,7 +197,7 @@ git commit -m "create mern app"
 git push origin master
 ```
 
-#### Test Travis CI 
+#### Step 4: Heroku flow
 We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
   * create new feature branch
 ```javascript
