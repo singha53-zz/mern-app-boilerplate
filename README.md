@@ -197,7 +197,19 @@ git commit -m "create mern app"
 git push origin master
 ```
 
-#### Step 4: Heroku flow
+## Step 4: Heroku flow
+### Step 4a: create dev branch
+```shell
+git checkout -b dev
+```
+
+### Step 4b: create staging and production apps
+```shell
+heroku create --remote staging-app
+heroku create app_name
+```
+
+### Step 4c: create new feature and create a PR for review
 We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
   * create new feature branch
 ```javascript
@@ -213,10 +225,9 @@ git commit -m "change background color"
 git push origin feature
 ```
   * go to the app_name repo page: https://github.com/singha53/app_name --> to to the Pull requests tab ==> click the green button (Compare & pull request).
-  * make sure base: master and compare: feature
+  * make sure base: dev and compare: feature
   * add comment and then click Create pull request (green button)
   * Git then checks for merge conflicts and will let you know if there is a conflict.
-  * Travis CI - Pull Request --> Queued - Build started --> In progress - Build Started --> 
 
 
 ## Resources:
