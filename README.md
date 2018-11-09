@@ -213,11 +213,43 @@ git push origin master
 git checkout -b dev
 ```
 
-### Step 4c: create staging and production apps
+### Step 4c: Heroku pipeline
+  * create staging and production apps
 ```shell
-heroku create --remote staging-app
+heroku create --remote staging-app_name
 heroku create app_name
+git remote -v
 ```
+  * git remote -v should list the origin (git repo), staginig-app_name (staging app) and heroku (production app)
+  * in my case I have: 
+```shell
+heroku  https://git.heroku.com/merntest0.git (fetch)
+heroku  https://git.heroku.com/merntest0.git (push)
+origin  https://github.com/singha53/merntest.git (fetch)
+origin  https://github.com/singha53/merntest.git (push)
+staging-merntest0       https://git.heroku.com/cryptic-fjord-42648.git (fetch)
+staging-merntest0       https://git.heroku.com/cryptic-fjord-42648.git (push)
+```
+
+  * add the two heroku apps to a pipeline. First add the production app to the pipeline using the production apps name:
+```shell
+heroku pipelines:create -a merntest0
+```
+  * this command will prompt you to specific a pipeline name, stage of app (develpment, staging, and production). I typed in merntest0-pipeline for the name, production for the stage. My terminal looks like this:
+```shell
+Amrits-MacBook-Pro:merntest asingh$ heroku pipelines:create -a merntest0
+? Pipeline name merntest0-pipeline
+? Stage of merntest0 production
+Creating merntest0-pipeline pipeline... done
+Adding ⬢ merntest0 to merntest0-pipeline pipeline as production... done
+```
+  * then add the staging app using its name assigned by heroku (in my case its cryptic-fjord-42648, yours will be different)
+```shell
+Amrits-MacBook-Pro:merntest asingh$ heroku pipelines:add merntest0-pipeline -a cryptic-fjord-42648
+? Stage of cryptic-fjord-42648 staging
+Adding ⬢ cryptic-fjord-42648 to merntest0-pipeline pipeline as staging... done
+```
+  * to confirm you can login in heroku and see the a pipeline (merntest0-pipeline) located with your other apps.
 
 ### Step 4d: create new feature and create a PR for review
 We will create a feature branch (turn the background of the homepage to yellow), create a PR and see if it passes Travis CI's checks. 
