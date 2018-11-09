@@ -276,7 +276,7 @@ git push origin feature
 ```shell
 git checkout dev
 git pull origin dev
-git push staging-merntest0 dev:master
+git push staging-merntest0 master
 ```
 ### Step 5: Production
 ```shell
@@ -284,8 +284,9 @@ git checkout master
 it pull origin master
 git merge dev
 git push origin master
-git push heroku master:master
+heroku pipelines:promote -r staging
 ```
+  * go to https://<app_name>.herokuapp.com/ to confirm
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
