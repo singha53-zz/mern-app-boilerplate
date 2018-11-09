@@ -40,6 +40,7 @@ describe("canary test", function() {
     "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
   }
 ```
+**Note: test property must exist in scripts for travis ci to work**
  
 ## Step 2: enable Travis CI
   * click Authorize travis-ci to log in with your GitHub username/password.
