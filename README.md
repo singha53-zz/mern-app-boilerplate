@@ -18,6 +18,22 @@ Asides:
   * click on you picture and go to Settings
   * under Repositories search for app_name
   * modify the Settings of your app: under General: check-off build push branches and leave build pushed pull requests checked ( this is my personal preference)
+  * create a .travis.yml in the root directory (app_name/)
+```shell
+touch .travis.yml
+code .travis.yml
+```
+  * type the following in the yml file
+```shell
+language: node_js
+node_js: "8"
+branches:
+  only:
+  - master
+cache:
+  directories:
+    - node_module
+```
   
 ## Step 3: setup on MERN app on local machine
 ### Step 3a: Set up Express server
@@ -186,7 +202,7 @@ git add .
 git commit -m "change background color"
 git push origin feature
 ```
-  * go to the app_name repo page: https://github.com/singha53/app_name --> to to the Pull requests tab ==> click the green button (Compare & pull request). ![alt text](https://www.drupal.org/files/pull_request_test_highlighted.png)
+  * go to the app_name repo page: https://github.com/singha53/app_name --> to to the Pull requests tab ==> click the green button (Compare & pull request).
 
 
 ## Resources:
