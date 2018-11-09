@@ -161,14 +161,8 @@ yarn start
 ```shell
 yarn start
 ```
+#### If working the app should look like the following, but Learn react should be ALL CAPS!!
 
-
-  * replace client/src/App.js with the following:
-```javascript
-import React, { Component } from 'react';
-
-
-```
 
 ## Resources:
   1) https://daveceddia.com/deploy-react-express-app-heroku/
