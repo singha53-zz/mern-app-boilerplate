@@ -225,6 +225,7 @@ git push origin feature
   * make sure base: master and compare: feature
   * add comment and then click Create pull request (green button)
   * Git then checks for merge conflicts and will let you know if there is a conflict.
+  * Travis CI - Pull Request --> Queued - Build started --> In progress - Build Started --> 
 
 
 ## Resources:
