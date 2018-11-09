@@ -17,6 +17,7 @@ Asides:
 ## Step 1: add canary test
   * create test folder in root directory (app_name/) and add a random test file
 ```shell
+yarn add --dev mocha chai
 mkdir test
 cd test
 touch canary.test.js
