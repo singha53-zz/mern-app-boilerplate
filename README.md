@@ -13,54 +13,27 @@ Asides:
   * go to repositories tab on your Github Profile page and hit the New button (green button on the right)
   * type name of app (app_name will be used throughout this tutorial; replace with the name of your choice), description, and initialize with README.md
   * FYI: if you already have a travis ci account and it is sycned with github, then at the time of initialization, there should be an option to select Travis CI.
-  
-## Step 1: add canary test
-  * create test folder in root directory (app_name/) and add a random test file
-```shell
-yarn add --dev mocha chai
-mkdir test
-cd test
-touch canary.test.js
-code canary.test.js
-```
-  * add the following lines in the canary.test.js file
-```shell
-const expect = require("chai").expect;
 
-describe("canary test", function() {
-  it("should pass this canary test", function() {
-    expect(true).to.be.true;
-  });
-});
-```
-  * got to app_name/package.json and add a test property in the scripts property
-```shell
-"scripts": {
-    "start": "node index.js",
-    "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
-  }
-```
-**Note: test property must exist in scripts for travis ci to work**
- 
-## Step 2: enable Travis CI
-  * click Authorize travis-ci to log in with your GitHub username/password.
-  * click on you picture and go to Settings
-  * under Repositories search for app_name
-  * modify the Settings of your app: under General: check-off build push branches and leave build pushed pull requests checked ( this is my personal preference)
   
-## Step 3: setup on MERN app on local machine
-### Step 3a: Set up Express server
+## Step 1: setup on MERN app on local machine
+### Step 1a: Set up Express server
 ```shell
 git clone https://github.com/<username>/app_name.git
 cd app_name
 code .
 yarn init -y
 yarn add express path
-touch index.js
-code index.js
+touch .gitignore index.js
+code .gitignore
 ```
+  * add node_modules to .gitignore
+```shell
+node_modules/
+```
+
   * add the following the index.js file
 ```javascript
+code index.js
 const express = require('express');
 const app = express();
 
@@ -89,7 +62,7 @@ app.listen(PORT, function() {
   });
 ```
 
-### Step 3b: Set up front-end react app
+### Step 1b: Set up front-end react app
   * install create-react-app globally if not already installed
 ```shell
 yarn global add create-react-app
@@ -153,7 +126,39 @@ class App extends Component {
 
 export default App;
 ```
+## Step 2: add canary test
+  * create test folder in root directory (app_name/) and add a random test file
+```shell
+yarn add --dev mocha chai
+mkdir test
+cd test
+touch canary.test.js
+code canary.test.js
+```
+  * add the following lines in the canary.test.js file
+```shell
+const expect = require("chai").expect;
 
+describe("canary test", function() {
+  it("should pass this canary test", function() {
+    expect(true).to.be.true;
+  });
+});
+```
+  * got to app_name/package.json and add a test property in the scripts property
+```shell
+"scripts": {
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
+  }
+```
+**Note: test property must exist in scripts for travis ci to work**
+ 
+## Step 3: enable Travis CI
+  * click Authorize travis-ci to log in with your GitHub username/password.
+  * click on you picture and go to Settings
+  * under Repositories search for app_name
+  * modify the Settings of your app: under General: check-off build push branches and leave build pushed pull requests checked ( this is my personal preference)
 
 ## Step 4: Test MERN APP
   * first go to app_name/package.json and add a new property (scripts)
