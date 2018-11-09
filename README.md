@@ -27,10 +27,13 @@ code .gitignore
 ```shell
 node_modules/
 ```
-
+  * create and index.js file
+```shell
+touch index.js
+code index.js
+```
   * add the following the index.js file
 ```javascript
-code index.js
 const express = require('express');
 const app = express();
 
@@ -145,7 +148,7 @@ describe("canary test", function() {
   * got to app_name/package.json and add a test property in the scripts property
 ```shell
 "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit"
   }
 ```
