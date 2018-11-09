@@ -205,6 +205,13 @@ yarn start
     "heroku-postbuild": "cd client && yarn && yarn run build"
   }
 ```
+#### commit everything to master
+  * always be in the root folder (app_name/) when pushing to git (NOT client/)
+```javascript
+git add .
+git commit -m "create mern app"
+git push origin master
+```
 
 ### Step 4b: Heroku pipeline
   * create staging and production apps
@@ -251,14 +258,6 @@ Amrits-MacBook-Pro:merntest asingh$ heroku pipelines:add merntest0-pipeline -a c
 Adding ⬢ cryptic-fjord-42648 to merntest0-pipeline pipeline as staging... done
 ```
   * to confirm you can login in heroku and see the a pipeline (merntest0-pipeline) located with your other apps.
-
-#### commit everything to master
-  * always be in the root folder (app_name/) when pushing to git (NOT client/)
-```javascript
-git add .
-git commit -m "create mern app"
-git push origin master
-```
 
 ### Step 4b: create dev branch
 ```shell
