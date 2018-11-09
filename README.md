@@ -175,8 +175,7 @@ describe("canary test", function() {
     "start": "node index.js"
   }
 }
-
- **note**: same port as express server
+```
 
   * in app_name/ start express server using:
 ```shell
