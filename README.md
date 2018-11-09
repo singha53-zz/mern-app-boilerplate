@@ -295,7 +295,7 @@ git push staging-merntest0 dev:master
 ### Step 5: Production
 ```shell
 git checkout master
-it pull origin master
+git pull origin master
 git merge dev
 git push origin master
 heroku pipelines:promote -r staging-merntest0
