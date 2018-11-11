@@ -303,7 +303,7 @@ heroku pipelines:promote -r staging-merntest0
   * go to https://<app_name>.herokuapp.com/ to confirm
   * Note: if you are not using heroku pipelines, push to production master, ie. instead of `heroku pipelines:promote -r staging-merntest0` do this:
 ```shell
-git push heroku master
+git push heroku master:master
 ```
 
 ## Resources:
