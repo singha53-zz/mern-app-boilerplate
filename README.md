@@ -300,6 +300,8 @@ git merge dev
 git push origin master
 heroku pipelines:promote -r staging-merntest0
 ```
+
+  * note: instead of git merge dev (you can also create a PR and merge on github), then you would do a git pull origin master (instead of a git push origin master)
   * go to https://<app_name>.herokuapp.com/ to confirm
   * Note: if you are not using heroku pipelines, push to production master, ie. instead of `heroku pipelines:promote -r staging-merntest0` do this:
 ```shell
