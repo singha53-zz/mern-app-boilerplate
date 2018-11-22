@@ -298,6 +298,7 @@ git checkout master
 git pull origin master
 git merge dev
 git push origin master
+heroku addons:create mongolab --remote staging-omics-hub
 heroku pipelines:promote -r staging-merntest0
 ```
 
@@ -305,6 +306,7 @@ heroku pipelines:promote -r staging-merntest0
   * go to https://<app_name>.herokuapp.com/ to confirm
   * Note: if you are not using heroku pipelines, push to production master, ie. instead of `heroku pipelines:promote -r staging-merntest0` do this:
 ```shell
+heroku addons:create mongolab
 git push heroku master:master
 ```
 
